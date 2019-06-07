@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: camel-controller-manager
+  labels:
+    control-plane: camel-controller-manager
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      control-plane: camel-controller-manager
+  template:
+    metadata:
+      labels:
+        control-plane: camel-controller-manager
+    spec:
+      serviceAccountName: camel-controller-manager
+      containers:
+        - name: manager
+          image: gcr.io/knative-releases/github.com/knative/eventing-sources/contrib/camel/cmd/controller@sha256:b79a5903075388c64a2215540398ae5bcf6b77b7fdd84c66c9eb62762aa4aaef
+          imagePullPolicy: IfNotPresent
+
