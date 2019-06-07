@@ -42,6 +42,23 @@ spec:
       kind: CamelSource
       name: camelsources.sources.eventing.knative.dev
       version: v1alpha1
+    required:
+    - kind: KnativeServing
+      name: knativeservings.serving.knative.dev
+      version: v1alpha1
+      displayName: Knative Serving
+      description: Represents an installation of a particular version of Knative Serving
+    - kind: KnativeEventing
+      name: knativeeventings.eventing.knative.dev
+      version: v1alpha1
+      displayName: Knative Eventing
+      description: Represents an installation of a particular version of Knative Eventing
+    ## Can't add Camel K because of this: https://github.com/operator-framework/operator-lifecycle-manager/issues/873
+    #- kind: Integration
+    #  name: integrations.camel.apache.org
+    #  version: v1alpha1
+    #  displayName: Camel K Integration
+    #  description: Represents a Camel K Integration
   description: |
     The Knative Camel addon provides a collection of eventing sources from the popular integration framework [Apache Camel](http://camel.apache.org/).
     Sources are based on [Camel K integrations](https://github.com/apache/camel-k), a subproject of Apache Camel for running integration code in the cloud.
