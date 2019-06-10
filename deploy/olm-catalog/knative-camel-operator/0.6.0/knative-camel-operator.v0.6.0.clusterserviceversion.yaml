@@ -255,7 +255,7 @@ spec:
   maturity: alpha
   minKubeVersion: 1.11.0
   provider:
-    name: Knative Community
+    name: Red Hat
   selector:
     matchLabels:
       name: knative-camel
