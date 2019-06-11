@@ -248,8 +248,8 @@ spec:
   labels:
     name: knative-camel
   links:
-  - name: Knative Eventing
-    url: https://github.com/knative/eventing/
+  - name: Knative Eventing Contrib
+    url: https://github.com/knative/eventing-contrib
   - name: Documentation
     url: https://www.knative.dev/docs/
   maintainers:
