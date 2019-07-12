@@ -10,11 +10,11 @@ Knative Camel can be installed directly from Operator Hub and it has the followi
 - Knative Serving
 - Camel K
 
->**NOTE:** Knative Camel 0.6.0 is compatible with Camel K 0.2.0, which cannot be installed from Operator Hub.
+>**NOTE:** Knative Camel 0.7.1 is compatible with Camel K 0.3.4, which cannot be installed from Operator Hub (although it's available there).
 
-The Camel K client can be downloaded from the [0.2.0 release page](https://github.com/apache/camel-k/releases/tag/0.2.0) and installed following the instructions in the [github repository](https://github.com/apache/camel-k#installation).
+The Camel K client can be downloaded from the [0.3.4 release page](https://github.com/apache/camel-k/releases/tag/0.3.4) and installed following the instructions in the [github repository](https://github.com/apache/camel-k#installation).
   
-Camel K 0.2.0 can be installed in "Single Namespace" mode only, so you must install it in any namespace where you want to deploy a Camel source.
+Camel K 0.3.4 can be installed in "Single Namespace" mode or "All Namespaces" mode. In case of single namespace mode, you must install it in any namespace where you want to deploy a Camel source.
 
 For example, to use Knative Camel in an example namespace, follow these steps:
 
