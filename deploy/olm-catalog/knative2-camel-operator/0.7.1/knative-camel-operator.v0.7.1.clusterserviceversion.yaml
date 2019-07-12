@@ -100,11 +100,12 @@ spec:
       version: v1alpha1
       displayName: Knative Eventing
       description: Represents an installation of a particular version of Knative Eventing
-    - kind: Integration
-      name: integrations.camel.apache.org
-      version: v1alpha1
-      displayName: Camel K Integration
-      description: Represents a Camel K Integration
+    ## Cannot add this because of: https://github.com/knative/eventing-contrib/issues/484
+    #- kind: Integration
+    #  name: integrations.camel.apache.org
+    #  version: v1alpha1
+    #  displayName: Camel K Integration
+    #  description: Represents a Camel K Integration
   description: |
     The Knative Camel addon provides a collection of eventing sources from the popular integration framework [Apache Camel](http://camel.apache.org/).
     Sources are based on [Camel K integrations](https://github.com/apache/camel-k), a subproject of Apache Camel for running integration code in the cloud.
@@ -113,7 +114,9 @@ spec:
     [Camel Source section](https://knative.dev/docs/eventing/samples/apache-camel-source/) of the
     [Knative documentation site](https://www.knative.dev/docs).
 
-    The operator requires Apache Camel K 0.3.4 to be installed from the Operator Hub in all namespaces where you want to run Camel Sources or in "All Namespaces" mode.
+    The operator requires Camel K 0.3.4 to be installed in any namespace where you want to run Camel eventing sources. Please, refer to the
+    [Camel K documentation](https://github.com/apache/camel-k) for installation instructions.
+
     Knative Serving and Eventing are also required for installing this operator.
   displayName: Knative Apache Camel Operator
   icon:
@@ -135,6 +138,12 @@ spec:
           - update
           - patch
           - delete
+        - apiGroups:
+          - rbac.authorization.k8s.io
+          resources:
+          - clusterroles
+          verbs:
+          - list
         - apiGroups:
           - ""
           resources:
