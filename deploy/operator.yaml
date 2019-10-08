@@ -19,6 +19,6 @@ spec:
       serviceAccountName: camel-controller-manager
       containers:
         - name: manager
-          image: gcr.io/knative-releases/github.com/knative/eventing-sources/contrib/camel/cmd/controller@sha256:b79a5903075388c64a2215540398ae5bcf6b77b7fdd84c66c9eb62762aa4aaef
+          image: gcr.io/knative-releases/github.com/knative/eventing-contrib/camel/source/cmd/controller@sha256:73765296e64b8d2e365132982475ca3a491a2c822b743a8cfa1a30b9d2d7550f
           imagePullPolicy: IfNotPresent
 

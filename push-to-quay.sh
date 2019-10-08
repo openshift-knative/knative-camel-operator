@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PACKAGE=knative-camel-operator
-VERSION=0.7.1
+VERSION=0.8.2
 
 export AUTH_TOKEN=$(curl -sH "Content-Type: application/json" -XPOST https://quay.io/cnr/api/v1/users/login -d '{"user": {"username": "'"${QUAY_USERNAME}"'", "password": "'"${QUAY_PASSWORD}"'"}}' | jq -r '.token')
 
