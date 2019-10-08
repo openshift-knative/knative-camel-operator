@@ -3,72 +3,25 @@ kind: ClusterServiceVersion
 metadata:
   annotations:
     alm-examples: |-
-      [{
-        "apiVersion": "sources.eventing.knative.dev/v1alpha1",
-        "kind": "CamelSource",
-        "metadata": {
+      [
+        {
+          "apiVersion": "sources.eventing.knative.dev/v1alpha1",
+          "kind": "CamelSource",
+          "metadata": {
             "name": "camel-timer-source"
-        },
-        "spec": {
+          },
+          "spec": {
             "source": {
-                "component": {
-                    "uri": "timer:tick?period=3s"
-                }
+              "flow": "from:\n  uri: 'timer:tick?period=3s'\n  steps:\n  - set-body:\n      constant: Hello World!\n"
             },
             "sink": {
-                "apiVersion": "eventing.knative.dev/v1alpha1",
-                "kind": "Channel",
-                "name": "camel-test"
-            }
-        }
-      },
-      {
-        "apiVersion": "sources.eventing.knative.dev/v1alpha1",
-        "kind": "CamelSource",
-        "metadata": {
-          "name": "camel-telegram-source"
-        },
-        "spec": {
-          "sink": {
-            "apiVersion": "eventing.knative.dev/v1alpha1",
-            "kind": "Channel",
-            "name": "camel-test"
-          },
-          "source": {
-            "component": {
-              "properties": {
-                "camel.component.knative.jsonSerializationEnabled": "true",
-                "camel.component.telegram.authorizationToken": "\u003cput-your-token-here\u003e"
-              },
-              "uri": "telegram:bots"
+              "apiVersion": "messaging.knative.dev/v1alpha1",
+              "kind": "InMemoryChannel",
+              "name": "camel-test"
             }
           }
         }
-      },
-      {
-        "apiVersion": "sources.eventing.knative.dev/v1alpha1",
-        "kind": "CamelSource",
-        "metadata": {
-          "name": "camel-k-source"
-        },
-        "spec": {
-          "sink": {
-            "apiVersion": "eventing.knative.dev/v1alpha1",
-            "kind": "Channel",
-            "name": "camel-test"
-          },
-          "source": {
-            "integration": {
-              "sources": [
-                {
-                  "content": "from(\"timer:tick?period=5s\") .log(\"Fetching quote of the day\") .to(\"https4://gist.githubusercontent.com/nicolaferraro/e3c72ace3c751f9f88273896611ce5fe/raw/3b6f54060bacb56b6719b7386a4645cb59ad6cc1/quote.json\") .setHeader(\"Content-Type\").constant(\"application/json\") .to(\"knative:endpoint/sink?cloudEventsType=org.apache.camel.quote\")",
-                  "name": "file.groovy"
-                }
-              ]
-            }
-          }
-        }
-      }]
+      ]
     capabilities: Basic Install
     categories: Integration & Delivery
     certified: "false"
@@ -108,7 +61,7 @@ spec:
     [Camel Source section](https://knative.dev/docs/eventing/samples/apache-camel-source/) of the
     [Knative documentation site](https://www.knative.dev/docs).
 
-    The operator requires Camel K 1.0.0-M1 to be installed in any namespace where you want to run Camel eventing sources. Please, refer to the
+    The operator requires Camel K 1.0.0-M2 to be installed in any namespace where you want to run Camel eventing sources. Please, refer to the
     [Camel K documentation](https://github.com/apache/camel-k) for installation instructions.
 
     Knative Serving and Eventing are also required for installing this operator.
