@@ -53,6 +53,11 @@ spec:
       version: v1alpha1
       displayName: Knative Eventing
       description: Represents an installation of a particular version of Knative Eventing
+    #- kind: Integration
+    #  name: integrations.camel.apache.org
+    #  version: v1alpha1
+    #  displayName: Camel K Integration
+    #  description: Represents a Camel K Integration
   description: |
     The Knative Camel addon provides a collection of eventing sources from the popular integration framework [Apache Camel](http://camel.apache.org/).
     Sources are based on [Camel K integrations](https://github.com/apache/camel-k), a subproject of Apache Camel for running integration code in the cloud.
@@ -165,7 +170,9 @@ spec:
               - image: gcr.io/knative-releases/github.com/knative/eventing-contrib/camel/source/cmd/controller@sha256:73765296e64b8d2e365132982475ca3a491a2c822b743a8cfa1a30b9d2d7550f
                 imagePullPolicy: IfNotPresent
                 name: manager
-                resources: {}
+                env:
+                - name: CAMEL_K_INSTALLED
+                  value: "true"
               serviceAccountName: camel-controller-manager
         serviceAccountName: camel-controller-manager
     strategy: deployment
