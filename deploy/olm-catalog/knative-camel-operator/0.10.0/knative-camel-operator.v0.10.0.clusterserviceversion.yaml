@@ -38,7 +38,7 @@ metadata:
     capabilities: Basic Install
     categories: Integration & Delivery
     certified: "false"
-    containerImage: docker.io/nibbio84/controller-344f2ef3f8e7c4fd659ca6d724fe2cb2:latest
+    containerImage: quay.io/openshift-knative/knative-eventing-sources-camel-source-controller:v0.10.0
     createdAt: "2019-11-25T08:40:00Z"
     description: The Knative Camel addon provides a collection of eventing sources
       from the popular integration framework Apache Camel.
@@ -180,7 +180,7 @@ spec:
                 control-plane: camel-controller-manager
             spec:
               containers:
-              - image: docker.io/nibbio84/controller-344f2ef3f8e7c4fd659ca6d724fe2cb2:latest
+              - image: quay.io/openshift-knative/knative-eventing-sources-camel-source-controller:v0.10.0
                 imagePullPolicy: IfNotPresent
                 name: manager
                 env:
