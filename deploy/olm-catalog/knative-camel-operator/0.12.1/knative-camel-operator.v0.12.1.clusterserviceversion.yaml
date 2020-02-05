@@ -39,7 +39,7 @@ metadata:
     categories: Integration & Delivery
     certified: "false"
     containerImage: quay.io/openshift-knative/knative-eventing-sources-camel-source-controller:v0.12.1
-    createdAt: "2019-11-25T08:40:00Z"
+    createdAt: "2020-02-04T08:40:00Z"
     description: The Knative Camel addon provides a collection of eventing sources
       from the popular integration framework Apache Camel.
     repository: https://github.com/knative/eventing-sources
@@ -56,19 +56,9 @@ spec:
       name: camelsources.sources.eventing.knative.dev
       version: v1alpha1
     required:
-    - kind: KnativeServing
-      name: knativeservings.serving.knative.dev
-      version: v1alpha1
-      displayName: Knative Serving
-      description: Represents an installation of a particular version of Knative Serving
-    - kind: KnativeEventing
-      name: knativeeventings.eventing.knative.dev
-      version: v1alpha1
-      displayName: Knative Eventing
-      description: Represents an installation of a particular version of Knative Eventing
     - kind: Integration
       name: integrations.camel.apache.org
-      version: v1alpha1
+      version: v1
       displayName: Camel K Integration
       description: Represents a Camel K Integration
   description: |
