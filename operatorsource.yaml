@@ -1,7 +1,7 @@
 apiVersion: operators.coreos.com/v1
 kind: OperatorSource
 metadata:
-  name: knative-camel
+  name: camel-sources
   namespace: openshift-marketplace
 spec:
   type: appregistry
