@@ -5,7 +5,7 @@ metadata:
     alm-examples: |-
       [
         {
-          "apiVersion": "sources.eventing.knative.dev/v1alpha1",
+          "apiVersion": "sources.knative.dev/v1alpha1",
           "kind": "CamelSource",
           "metadata": {
             "name": "camel-timer-source"
@@ -53,7 +53,7 @@ spec:
     - description: Represents a Knative Source based on Apache Camel
       displayName: Camel Source
       kind: CamelSource
-      name: camelsources.sources.eventing.knative.dev
+      name: camelsources.sources.knative.dev
       version: v1alpha1
     required:
     - kind: Integration
