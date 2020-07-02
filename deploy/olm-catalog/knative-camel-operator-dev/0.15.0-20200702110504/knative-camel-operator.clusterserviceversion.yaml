@@ -47,7 +47,7 @@ metadata:
       from the popular integration framework Apache Camel.
     repository: https://github.com/knative/eventing-sources
     support: Camel
-  name: knative-camel-operator.v0.15.0
+  name: knative-camel-operator.v0.15.0-20200702110504
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -215,8 +215,8 @@ spec:
   minKubeVersion: 1.11.0
   provider:
     name: Red Hat
-  replaces: knative-camel-operator.v0.13.2
+  replaces: knative-camel-operator.v0.15.0-20200702110458
   selector:
     matchLabels:
       name: knative-camel
-  version: 0.15.0
+  version: 0.15.0-20200702110504
