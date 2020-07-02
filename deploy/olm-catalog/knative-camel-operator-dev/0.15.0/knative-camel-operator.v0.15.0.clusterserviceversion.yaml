@@ -1,6 +1,8 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion
 metadata:
+  labels:
+    console.openshift.io/event-source-provider: "true"
   annotations:
     alm-examples: |-
       [
@@ -33,7 +35,8 @@ metadata:
               }
             }
           }
-        }
+        },
+        {"apiVersion": "sources.knative.dev/v1alpha1", "kind": "CamelSource", "metadata": {"name": "camel-telegram-source", "labels": {"console.openshift.io/event-source": "true"}}, "spec": {"source": {"flow": {"from": {"uri": "telegram:bots", "parameters": {"authorizationToken": "<put-here-the-token-from-the-bot-father>"}, "steps": [{"marshal": {"json": {}}}, {"to": "log:info"}]}}, "integration": {"dependencies": ["camel:jackson"]}}, "sink": {"ref": {"apiVersion": "messaging.knative.dev/v1beta1", "kind": "InMemoryChannel", "name": "messages"}}}}
       ]
     capabilities: Basic Install
     categories: Integration & Delivery
@@ -177,6 +180,10 @@ spec:
                 env:
                 - name: CAMEL_K_INSTALLED
                   value: "true"
+                - name: SYSTEM_NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.namespace
               serviceAccountName: camel-controller-manager
         serviceAccountName: camel-controller-manager
     strategy: deployment
