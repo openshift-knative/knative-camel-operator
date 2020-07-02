@@ -31,6 +31,7 @@ update_manifest() {
     echo "Updating Manifest"
     sed -i "s/^  version\: .*$/  version: $version/" $location/deploy/olm-catalog/knative-camel-operator-dev/$version/knative-camel-operator.clusterserviceversion.yaml
     sed -i "s/^  replaces\: .*$/  replaces: knative-camel-operator.v$old_version/" $location/deploy/olm-catalog/knative-camel-operator-dev/$version/knative-camel-operator.clusterserviceversion.yaml
+    sed -i "s/^    createdAt\: .*$/    createdAt: \"$(date --iso-8601=seconds)\"/" $location/deploy/olm-catalog/knative-camel-operator-dev/$version/knative-camel-operator.clusterserviceversion.yaml
     sed -i "s/^\(.*\)name\: knative-camel-operator\.v.*$/\1name: knative-camel-operator.v$version/" $location/deploy/olm-catalog/knative-camel-operator-dev/$version/knative-camel-operator.clusterserviceversion.yaml
     sed -i "s/^\(.*\)currentCSV\: knative-camel-operator\.v.*$/\1currentCSV: knative-camel-operator.v$version/" $location/deploy/olm-catalog/knative-camel-operator-dev/knative-camel-operator.package.yaml
 
