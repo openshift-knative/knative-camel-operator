@@ -46,12 +46,12 @@ metadata:
     categories: Integration & Delivery
     certified: "false"
     containerImage: quay.io/openshift-knative/knative-eventing-sources-camel-source-controller:v0.15.0
-    createdAt: "2020-07-15T18:27:59+02:00"
+    createdAt: "2020-07-16T09:15:43+02:00"
     description: The Knative Camel addon provides a collection of eventing sources
       from the popular integration framework Apache Camel.
     repository: https://github.com/knative/eventing-sources
     support: Camel
-  name: knative-camel-operator.v0.15.0-20200715182759
+  name: knative-camel-operator.v0.15.0-20200716091543
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -219,8 +219,8 @@ spec:
   minKubeVersion: 1.11.0
   provider:
     name: Red Hat
-  replaces: knative-camel-operator.v0.15.0-20200715092155
+  replaces: knative-camel-operator.v0.15.0-20200715182759
   selector:
     matchLabels:
       name: knative-camel
-  version: 0.15.0-20200715182759
+  version: 0.15.0-20200716091543
