@@ -1,5 +1,5 @@
 packageName: knative-camel-operator-dev
 channels:
 - name: alpha
-  currentCSV: knative-camel-operator.v0.15.0-20200717151352
+  currentCSV: knative-camel-operator.v0.15.0-20200717163007
 defaultChannel: alpha
