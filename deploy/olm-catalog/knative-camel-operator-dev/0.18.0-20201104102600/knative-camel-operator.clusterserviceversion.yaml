@@ -46,13 +46,13 @@ metadata:
     capabilities: Basic Install
     categories: Integration & Delivery
     certified: "false"
-    containerImage: quay.io/openshift-knative/knative-eventing-sources-camel-source-controller:v0.15.0
-    createdAt: "2020-08-04T15:11:16+02:00"
+    containerImage: gcr.io/knative-releases/knative.dev/eventing-camel/cmd/controller@sha256:874b498fc53ee5060c4f897c3fdf193a457d7c51c6ae6acc336d57518e848882
+    createdAt: "2020-11-04T10:26:00+01:00"
     description: The Knative Camel addon provides a collection of eventing sources
       from the popular integration framework Apache Camel.
     repository: https://github.com/knative/eventing-sources
     support: Camel
-  name: knative-camel-operator.v0.15.0-20200804151116
+  name: knative-camel-operator.v0.18.0-20201104102600
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -77,7 +77,7 @@ spec:
     [Camel Source section](https://knative.dev/docs/eventing/samples/apache-camel-source/) of the
     [Knative documentation site](https://www.knative.dev/docs).
 
-    The operator requires Camel K 1.0.0 to be installed in any namespace where you want to run Camel eventing sources. Please, refer to the
+    The operator requires Camel K 1.2.0 to be installed in any namespace where you want to run Camel eventing sources. Please, refer to the
     [Camel K documentation](https://github.com/apache/camel-k) for installation instructions.
 
     Knative Serving and Eventing are also required for installing this operator.
@@ -154,6 +154,18 @@ spec:
           - patch
           - delete
         - apiGroups:
+          - "coordination.k8s.io"
+          resources:
+          - leases
+          verbs:
+          - get
+          - list
+          - watch
+          - create
+          - update
+          - patch
+          - delete
+        - apiGroups:
           - serving.knative.dev
           - eventing.knative.dev
           - messaging.knative.dev
@@ -179,7 +191,7 @@ spec:
                 control-plane: camel-controller-manager
             spec:
               containers:
-              - image: quay.io/openshift-knative/knative-eventing-sources-camel-source-controller:v0.15.0
+              - image: gcr.io/knative-releases/knative.dev/eventing-camel/cmd/controller@sha256:874b498fc53ee5060c4f897c3fdf193a457d7c51c6ae6acc336d57518e848882
                 imagePullPolicy: IfNotPresent
                 name: manager
                 env:
@@ -220,8 +232,8 @@ spec:
   minKubeVersion: 1.11.0
   provider:
     name: Red Hat
-  replaces: knative-camel-operator.v0.15.0-20200717163007
+  replaces: knative-camel-operator.v0.15.0-20200804151116
   selector:
     matchLabels:
       name: knative-camel
-  version: 0.15.0-20200804151116
+  version: 0.18.0-20201104102600

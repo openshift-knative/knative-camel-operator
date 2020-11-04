@@ -8,7 +8,7 @@ location=$(dirname $0)
 
 
 PACKAGE=knative-camel-operator-dev
-BASE_VERSION=0.15.0
+BASE_VERSION=0.18.0
 
 
 update_manifest() {
